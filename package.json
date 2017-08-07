@@ -1,0 +1,47 @@
+{
+  "name": "react-typing",
+  "version": "1.0.0",
+  "description": "Typing animation with react",
+  "author": "Emmanuel Pilande",
+  "main": "dist/index.js",
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "babel src -d dist",
+    "prepublish": "npm run clean && npm run build"
+  },
+  "peerDependencies": {
+    "react": ">=15",
+    "prop-types": ">=15"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^4.4.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.1.0",
+    "prop-types": "^15.5.10",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "rimraf": "^2.6.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/epilande/react-typing.git"
+  },
+  "keywords": [
+    "react",
+    "typing",
+    "typewriter",
+    "animation"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/epilande/react-typing/issues"
+  },
+  "homepage": "https://github.com/epilande/react-typing#readme"
+}

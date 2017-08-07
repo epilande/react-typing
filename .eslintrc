@@ -1,0 +1,13 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "arrow-parens": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-wrap-multilines": 0,
+    "jsx-a11y/href-no-hash": "off"
+  },
+  "plugins": [
+    "react", "import"
+  ]
+}
