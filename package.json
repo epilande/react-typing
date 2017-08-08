@@ -7,6 +7,7 @@
   "scripts": {
     "clean": "rimraf lib",
     "build": "babel src -d lib",
+    "watch": "babel --watch src --out-dir lib",
     "docs": "cd docs && npm run dev",
     "prepublish": "npm run clean && npm run build"
   },
