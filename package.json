@@ -3,10 +3,11 @@
   "version": "1.0.0",
   "description": "Typing animation with react",
   "author": "Emmanuel Pilande",
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "babel src -d dist",
+    "clean": "rimraf lib",
+    "build": "babel src -d lib",
+    "docs": "cd docs && npm run dev",
     "prepublish": "npm run clean && npm run build"
   },
   "peerDependencies": {
