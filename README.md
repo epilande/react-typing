@@ -1,9 +1,10 @@
-<h1 align="center">React-Typing :keyboard:</h1>
+<h1 align="center">React-Typing ⌨️</h1>
 
 <p align="center">
   <strong>Typing animation with react</strong></br>
 </p>
 
+![React Typing](docs/react-typing.gif)
 
 ## Why?
 You want a typing animation in your application. You want it to keep the DOM
@@ -22,7 +23,7 @@ $ npm install --save react-typing
 ## Usage
 ```jsx
 import React from 'react';
-import Typing from 'react-typing';
+import { Typing } from 'react-typing';
 
 function App() {
   return (
