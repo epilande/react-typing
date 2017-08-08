@@ -1,0 +1,21 @@
+{
+  "name": "react-typing-docs",
+  "description": "React Typing Demo",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "babel-plugin-styled-components": "^1.1.7",
+    "next": "^3.0.1-beta.21",
+    "react": "^16.0.0-beta.3",
+    "react-dom": "^16.0.0-beta.3",
+    "react-typing": "^1.0.0",
+    "styled-components": "^2.1.2"
+  },
+  "author": "Emmanuel Pilande",
+  "private": true,
+  "license": "MIT"
+}
