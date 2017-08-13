@@ -11,16 +11,20 @@ class Typing extends Component {
       charactersToType: '',
       charactersTyped: [],
       characterIndex: 0,
-      keyDelay: props.keyDelay || 100,
+      keyDelay: props.keyDelay,
     };
   }
 
   componentDidMount() {
-    const { children } = this.props;
+    const { children, delay } = this.props;
     const { keyDelay } = this.state;
     const charactersToType = extractText(children);
     this.setState(() => ({ charactersToType })); // eslint-disable-line
-    this.startTyping(keyDelay);
+
+    clearTimeout(this.delayTimer);
+    this.delayTimer = setTimeout(() => {
+      this.startTyping(keyDelay);
+    }, delay);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -31,6 +35,7 @@ class Typing extends Component {
   }
 
   componentWillUnmount() {
+    clearTimeout(this.delayTimer);
     clearInterval(this.typeCharacterInterval);
   }
 
@@ -68,6 +73,7 @@ class Typing extends Component {
   render() {
     const { ...restProps } = this.props;
     delete restProps.children;
+    delete restProps.delay;
     delete restProps.keyDelay;
     delete restProps.onDone;
     const { charactersTyped } = this.state;
@@ -82,12 +88,14 @@ class Typing extends Component {
 
 Typing.defaultProps = {
   children: '',
+  delay: 0,
   keyDelay: 100,
   onDone: null,
 };
 
 Typing.propTypes = {
   children: PropTypes.node,
+  delay: PropTypes.number,
   keyDelay: PropTypes.number,
   onDone: PropTypes.func,
 };
