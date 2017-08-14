@@ -41,6 +41,7 @@ class Typing extends Component {
 
   startTyping(keyDelay) {
     clearInterval(this.typeCharacterInterval);
+    this.typeCharacter();
     this.typeCharacterInterval = setInterval(this.typeCharacter, keyDelay);
   }
 
