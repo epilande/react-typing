@@ -61,6 +61,13 @@ The `Typing` component will animate any text in props children.
 
 ### Props
 
+#### `delay` (number)
+
+*Default: `0`*
+
+Delay before the typing animation begins. This delay value is in
+**milliseconds**.
+
 #### `keyDelay` (number)
 
 *Default: `100`*
