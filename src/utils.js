@@ -25,7 +25,7 @@ export const composeTree = (
     const lineLength = startWord + children.length;
     const endWord = lineLength > characterIndex ? characterIndex : lineLength;
 
-    if (startWord < characterIndex) {
+    if (startWord <= characterIndex) {
       return charactersToType.substring(startWord, endWord);
     }
     return null;
