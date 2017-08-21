@@ -14,7 +14,12 @@ export const extractText = children => {
   return children;
 };
 
-export const composeTree = (children, charactersToType, characterIndex) => {
+export const composeTree = (
+  children,
+  charactersToType,
+  characterIndex,
+  typingHandler,
+) => {
   if (typeof children === 'string') {
     const startWord = charactersToType.indexOf(children);
     const lineLength = startWord + children.length;
@@ -28,13 +33,26 @@ export const composeTree = (children, charactersToType, characterIndex) => {
 
   return React.Children.map(children, child => {
     if (typeof child === 'string') {
-      return composeTree(child, charactersToType, characterIndex);
-    } else if (React.isValidElement(child)) {
-      return React.cloneElement(
+      return composeTree(
         child,
-        { ...child.props },
-        composeTree(child.props.children, charactersToType, characterIndex),
+        charactersToType,
+        characterIndex,
+        typingHandler,
       );
+    } else if (React.isValidElement(child)) {
+      const newChildren = composeTree(
+        child.props.children,
+        charactersToType,
+        characterIndex,
+        typingHandler,
+      );
+      if (newChildren !== null) {
+        const newProps = { ...child.props };
+        if (child.type.name === 'TypingDelay') {
+          newProps.typingHandler = typingHandler;
+        }
+        return React.cloneElement(child, newProps, newChildren);
+      }
     }
     return null;
   });

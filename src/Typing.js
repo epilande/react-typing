@@ -6,6 +6,7 @@ class Typing extends Component {
   constructor(props) {
     super(props);
     this.typeCharacter = this.typeCharacter.bind(this);
+    this.typingHandler = this.typingHandler.bind(this);
 
     this.state = {
       charactersToType: '',
@@ -52,6 +53,7 @@ class Typing extends Component {
       children,
       charactersToType,
       characterIndex,
+      this.typingHandler,
     );
 
     this.setState(() => ({
@@ -69,6 +71,14 @@ class Typing extends Component {
         onDone();
       }
     }
+  }
+
+  typingHandler(childProps) {
+    clearInterval(this.typeCharacterInterval);
+
+    setTimeout(() => {
+      this.startTyping(this.state.keyDelay);
+    }, childProps.delay);
   }
 
   render() {
