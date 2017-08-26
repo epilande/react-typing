@@ -18,13 +18,12 @@ class Typing extends Component {
 
   componentDidMount() {
     const { children, delay } = this.props;
-    const { keyDelay } = this.state;
     const charactersToType = extractText(children);
     this.setState(() => ({ charactersToType })); // eslint-disable-line
 
     clearTimeout(this.delayTimer);
     this.delayTimer = setTimeout(() => {
-      this.startTyping(keyDelay);
+      this.startTyping();
     }, delay);
   }
 
@@ -41,9 +40,9 @@ class Typing extends Component {
   }
 
   startTyping(keyDelay) {
+    const speed = keyDelay || this.state.keyDelay;
     clearInterval(this.typeCharacterInterval);
-    this.typeCharacter();
-    this.typeCharacterInterval = setInterval(this.typeCharacter, keyDelay);
+    this.typeCharacterInterval = setInterval(this.typeCharacter, speed);
   }
 
   typeCharacter() {
