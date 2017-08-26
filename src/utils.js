@@ -48,7 +48,7 @@ export const composeTree = (
       );
       if (newChildren !== null) {
         const newProps = { ...child.props };
-        if (child.type.name === 'TypingDelay') {
+        if (child.type.name === 'TypingHandle') {
           newProps.typingHandler = typingHandler;
         }
         return React.cloneElement(child, newProps, newChildren);

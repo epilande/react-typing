@@ -1,2 +1,2 @@
 export { default as Typing } from './Typing';
-export { default as TypingDelay } from './TypingDelay';
+export { default as TypingHandle } from './TypingHandle';
