@@ -76,8 +76,18 @@ class Typing extends Component {
     clearInterval(this.typeCharacterInterval);
 
     setTimeout(() => {
-      this.startTyping(this.state.keyDelay);
-    }, childProps.delay);
+      if (childProps.complete) {
+        const childLength = childProps.childToType.length;
+        return this.setState(
+          state => ({
+            characterIndex: state.characterIndex + childLength - 1,
+          }),
+          this.startTyping(),
+        );
+      }
+
+      return this.startTyping();
+    }, childProps.delay || 0);
   }
 
   render() {
