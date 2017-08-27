@@ -12,7 +12,7 @@ class Typing extends Component {
       charactersToType: '',
       charactersTyped: [],
       characterIndex: 0,
-      keyDelay: props.keyDelay,
+      speed: props.speed,
     };
   }
 
@@ -28,9 +28,9 @@ class Typing extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.keyDelay !== this.state.keyDelay) {
+    if (nextProps.speed !== this.state.speed) {
       this.setState(
-        () => ({ keyDelay: nextProps.keyDelay }),
+        () => ({ speed: nextProps.speed }),
         this.startTyping(),
       );
     }
@@ -45,7 +45,7 @@ class Typing extends Component {
     clearInterval(this.typeCharacterInterval);
     this.typeCharacterInterval = setInterval(
       this.typeCharacter,
-      this.state.keyDelay,
+      this.state.speed,
     );
   }
 
@@ -98,7 +98,7 @@ class Typing extends Component {
     const { ...restProps } = this.props;
     delete restProps.children;
     delete restProps.delay;
-    delete restProps.keyDelay;
+    delete restProps.speed;
     delete restProps.onDone;
     const { charactersTyped } = this.state;
 
@@ -113,14 +113,14 @@ class Typing extends Component {
 Typing.defaultProps = {
   children: '',
   delay: 0,
-  keyDelay: 100,
+  speed: 100,
   onDone: null,
 };
 
 Typing.propTypes = {
   children: PropTypes.node,
   delay: PropTypes.number,
-  keyDelay: PropTypes.number,
+  speed: PropTypes.number,
   onDone: PropTypes.func,
 };
 
