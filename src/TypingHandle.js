@@ -7,7 +7,11 @@ class TypingHandle extends Component {
   }
 
   render() {
-    return this.props.children || '';
+    return (
+      <span>
+        {this.props.children}
+      </span>
+    );
   }
 }
 
@@ -16,4 +20,3 @@ TypingHandle.defaultProps = {};
 TypingHandle.propTypes = {};
 
 export default TypingHandle;
-

@@ -29,10 +29,7 @@ class Typing extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.speed !== this.state.speed) {
-      this.setState(
-        () => ({ speed: nextProps.speed }),
-        this.startTyping(),
-      );
+      this.setState(() => ({ speed: nextProps.speed }), this.startTyping);
     }
   }
 
@@ -86,7 +83,14 @@ class Typing extends Component {
           state => ({
             characterIndex: state.characterIndex + childLength - 1,
           }),
-          this.startTyping(),
+          this.startTyping,
+        );
+      }
+
+      if (childProps.speed) {
+        return this.setState(
+          () => ({ speed: childProps.speed }),
+          this.startTyping,
         );
       }
 
