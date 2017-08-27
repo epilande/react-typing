@@ -29,8 +29,10 @@ class Typing extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.keyDelay !== this.state.keyDelay) {
-      this.setState(() => ({ keyDelay: nextProps.keyDelay }));
-      this.startTyping(nextProps.keyDelay);
+      this.setState(
+        () => ({ keyDelay: nextProps.keyDelay }),
+        this.startTyping(),
+      );
     }
   }
 
@@ -39,10 +41,12 @@ class Typing extends Component {
     clearInterval(this.typeCharacterInterval);
   }
 
-  startTyping(keyDelay) {
-    const speed = keyDelay || this.state.keyDelay;
+  startTyping() {
     clearInterval(this.typeCharacterInterval);
-    this.typeCharacterInterval = setInterval(this.typeCharacter, speed);
+    this.typeCharacterInterval = setInterval(
+      this.typeCharacter,
+      this.state.keyDelay,
+    );
   }
 
   typeCharacter() {
