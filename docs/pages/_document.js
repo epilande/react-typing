@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
     return (
       <html lang="en">
         <Head>
-          <title>My page</title>
+          <title>React Typing</title>
           {styleTags}
         </Head>
         <body>
