@@ -7,6 +7,7 @@ class Typing extends Component {
     super(props);
     this.typeCharacter = this.typeCharacter.bind(this);
     this.typingHandler = this.typingHandler.bind(this);
+    this.resetSpeed = this.resetSpeed.bind(this);
 
     this.state = {
       charactersToType: '',
@@ -73,20 +74,21 @@ class Typing extends Component {
     }
   }
 
+  resetSpeed() {
+    return this.setState(
+      () => ({ speed: this.props.speed }),
+      this.startTyping,
+    );
+  }
+
   typingHandler(childProps) {
     clearInterval(this.typeCharacterInterval);
 
-    setTimeout(() => {
-      if (childProps.complete) {
-        const childLength = childProps.childToType.length;
-        return this.setState(
-          state => ({
-            characterIndex: state.characterIndex + childLength - 1,
-          }),
-          this.startTyping,
-        );
-      }
+    if (childProps.completed) {
+      return this.resetSpeed();
+    }
 
+    return setTimeout(() => {
       if (childProps.speed) {
         return this.setState(
           () => ({ speed: childProps.speed }),
