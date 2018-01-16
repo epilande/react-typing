@@ -36,10 +36,11 @@ const Invert = styled.span`
   color: ${colors.background};
 `;
 
-export default () =>
+export default () => (
   <div>
     <Typing>
       <Title><Invert>React</Invert> Typing</Title>
       <p><strong>Typing animation with react</strong></p>
     </Typing>
-  </div>;
+  </div>
+);

@@ -75,10 +75,7 @@ class Typing extends Component {
   }
 
   resetSpeed() {
-    return this.setState(
-      () => ({ speed: this.props.speed }),
-      this.startTyping,
-    );
+    return this.setState(() => ({ speed: this.props.speed }), this.startTyping);
   }
 
   typingHandler(childProps) {
@@ -108,11 +105,7 @@ class Typing extends Component {
     delete restProps.onDone;
     const { charactersTyped } = this.state;
 
-    return (
-      <span {...restProps}>
-        {charactersTyped}
-      </span>
-    );
+    return <span {...restProps}>{charactersTyped}</span>;
   }
 }
 

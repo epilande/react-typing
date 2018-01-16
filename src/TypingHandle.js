@@ -17,7 +17,11 @@ class TypingHandle extends Component {
   componentWillReceiveProps(nextProps) {
     if (!this.state.completed && nextProps.children === this.props.children) {
       this.setState({ completed: true });
-      this.props.typingHandler({ ...this.props, type: 'TypingHandle', completed: true });
+      this.props.typingHandler({
+        ...this.props,
+        type: 'TypingHandle',
+        completed: true,
+      });
     }
   }
 
@@ -29,11 +33,7 @@ class TypingHandle extends Component {
   }
 
   render() {
-    return (
-      <span>
-        {this.props.children}
-      </span>
-    );
+    return <span>{this.props.children}</span>;
   }
 }
 

@@ -1,15 +1,13 @@
 import React from 'react';
 
-export const extractText = children => {
+export const extractText = (children) => {
   if (Array.isArray(children) || React.isValidElement(children)) {
-    return React.Children
-      .map(children, child => {
-        if (typeof child === 'string') {
-          return child;
-        }
-        return extractText(child.props.children);
-      })
-      .join('');
+    return React.Children.map(children, (child) => {
+      if (typeof child === 'string') {
+        return child;
+      }
+      return extractText(child.props.children);
+    }).join('');
   }
   return children;
 };
@@ -31,7 +29,7 @@ export const composeTree = (
     return null;
   }
 
-  return React.Children.map(children, child => {
+  return React.Children.map(children, (child) => {
     if (typeof child === 'string') {
       return composeTree(
         child,
