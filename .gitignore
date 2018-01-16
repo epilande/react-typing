@@ -3,3 +3,4 @@ dist
 lib
 .next
 package-lock.json
+.vscode
