@@ -8,12 +8,12 @@
     "start": "next start"
   },
   "dependencies": {
-    "babel-plugin-styled-components": "^1.1.7",
-    "next": "^3.0.1-beta.21",
-    "react": "^16.0.0-beta.3",
-    "react-dom": "^16.0.0-beta.3",
+    "babel-plugin-styled-components": "^1.4.0",
+    "next": "^4.2.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
     "react-typing": "^1.0.0",
-    "styled-components": "^2.1.2"
+    "styled-components": "^2.4.0"
   },
   "author": "Emmanuel Pilande",
   "private": true,
