@@ -9,7 +9,8 @@
     "build": "babel src -d lib",
     "watch": "babel --watch src --out-dir lib",
     "docs": "cd docs && npm run dev",
-    "prepublish": "npm run clean && npm run build"
+    "prepublish": "npm run clean && npm run build",
+    "format": "prettier --config .prettierrc --write \"./src/**/*.js\""
   },
   "peerDependencies": {
     "react": ">=15",
@@ -26,6 +27,7 @@
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
     "eslint-plugin-react": "^7.1.0",
+    "prettier": "^1.10.2",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
