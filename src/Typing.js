@@ -5,9 +5,9 @@ import { extractText, composeTree } from './utils';
 class Typing extends Component {
   constructor(props) {
     super(props);
+    this.setSpeed = this.setSpeed.bind(this);
     this.typeCharacter = this.typeCharacter.bind(this);
     this.typingHandler = this.typingHandler.bind(this);
-    this.resetSpeed = this.resetSpeed.bind(this);
 
     this.state = {
       charactersToType: '',
@@ -37,6 +37,10 @@ class Typing extends Component {
   componentWillUnmount() {
     clearTimeout(this.delayTimer);
     clearInterval(this.typeCharacterInterval);
+  }
+
+  setSpeed(speed) {
+    return this.setState(() => ({ speed }), this.startTyping);
   }
 
   startTyping() {
@@ -74,23 +78,16 @@ class Typing extends Component {
     }
   }
 
-  resetSpeed() {
-    return this.setState(() => ({ speed: this.props.speed }), this.startTyping);
-  }
-
   typingHandler(childProps) {
     clearInterval(this.typeCharacterInterval);
 
     if (childProps.completed) {
-      return this.resetSpeed();
+      return this.setSpeed(this.props.speed);
     }
 
     return setTimeout(() => {
       if (childProps.speed) {
-        return this.setState(
-          () => ({ speed: childProps.speed }),
-          this.startTyping,
-        );
+        return this.setSpeed(childProps.speed);
       }
 
       return this.startTyping();
